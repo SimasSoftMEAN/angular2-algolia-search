@@ -11,28 +11,28 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var HeroDetailComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent() {
-                    this.name = 'Awesome';
+            HeroDetailComponent = (function () {
+                function HeroDetailComponent() {
                 }
-                AppComponent = __decorate([
+                HeroDetailComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "\n    <h1>My First {{ name }} 2 App</h1>\n  "
+                        selector: 'my-hero-detail',
+                        inputs: ['hero'],
+                        template: "\n    <div *ngIf=\"hero\">\n      <h2>{{hero.name}} details!</h2>\n      <div><label>id: </label>{{hero.id}}</div>\n      <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"hero.name\" placeholder=\"name\"/>\n      </div>\n    </div>\n  ",
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
+                ], HeroDetailComponent);
+                return HeroDetailComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("HeroDetailComponent", HeroDetailComponent);
         }
     }
 });
-//# sourceMappingURL=app.component.js.map
+//# sourceMappingURL=hero-detail.component.js.map

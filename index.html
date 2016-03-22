@@ -19,19 +19,18 @@
     <script>
       System.config({
         packages: {
-          app: {
+          dist: {
             format: 'register',
             defaultExtension: 'js'
           }
         }
       });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
+      System.import('dist/main').then(null, console.error.bind(console));
     </script>
   </head>
 
-  <!-- 3. Display the application -->
   <body>
+  <!-- 3. Display the application -->
     <my-app>Loading...</my-app>
   </body>
 </html>
