@@ -1,7 +1,8 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
-import {HeroComponent} from './heroes/heroes.component';
+import {HeroesComponent} from './heroes/heroes.component';
 import {HeroService} from '../services/hero.service';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 @Component({
   selector   : 'my-app',
@@ -11,11 +12,8 @@ import {HeroService} from '../services/hero.service';
 })
 
 @RouteConfig([
-  {
-    path: '/heroes',
-    name: 'Heroes',
-    component: HeroComponent
-  }
+  { path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true },
+  { path: '/heroes', name: 'Heroes', component: HeroesComponent }
 ])
 
 export class AppComponent {

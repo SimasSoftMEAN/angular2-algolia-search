@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './heroes/heroes.component', '../services/hero.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './heroes/heroes.component', '../services/hero.service', './dashboard/dashboard.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './heroes/heroes.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, heroes_component_1, hero_service_1;
+    var core_1, router_1, heroes_component_1, hero_service_1, dashboard_component_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/router', './heroes/heroes.component'
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
+            },
+            function (dashboard_component_1_1) {
+                dashboard_component_1 = dashboard_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -39,11 +42,8 @@ System.register(['angular2/core', 'angular2/router', './heroes/heroes.component'
                         templateUrl: './app/components/app.html'
                     }),
                     router_1.RouteConfig([
-                        {
-                            path: '/heroes',
-                            name: 'Heroes',
-                            component: heroes_component_1.HeroComponent
-                        }
+                        { path: '/dashboard', name: 'Dashboard', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
+                        { path: '/heroes', name: 'Heroes', component: heroes_component_1.HeroesComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
