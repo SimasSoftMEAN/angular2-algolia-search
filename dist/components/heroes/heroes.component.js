@@ -11,7 +11,7 @@ System.register(['angular2/core', './hero-detail.component', '../../services/her
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, hero_detail_component_1, hero_service_1;
-    var AppComponent;
+    var HeroComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,34 +24,33 @@ System.register(['angular2/core', './hero-detail.component', '../../services/her
                 hero_service_1 = hero_service_1_1;
             }],
         execute: function() {
-            AppComponent = (function () {
-                function AppComponent(_heroService) {
+            HeroComponent = (function () {
+                function HeroComponent(_heroService) {
                     this._heroService = _heroService;
                     this.title = 'Tour of Heroes';
                 }
-                AppComponent.prototype.ngOnInit = function () {
+                HeroComponent.prototype.ngOnInit = function () {
                     this.getHeroes();
                 };
-                AppComponent.prototype.getHeroes = function () {
+                HeroComponent.prototype.getHeroes = function () {
                     var _this = this;
                     this._heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
                 };
-                AppComponent.prototype.selectHero = function (hero) {
+                HeroComponent.prototype.selectHero = function (hero) {
                     this.selectedHero = hero;
                 };
-                AppComponent = __decorate([
+                HeroComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         directives: [hero_detail_component_1.HeroDetailComponent],
-                        providers: [hero_service_1.HeroService],
                         styleUrls: ['./app/components/app/app.css'],
                         templateUrl: './app/components/app/app.html'
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService])
-                ], AppComponent);
-                return AppComponent;
+                ], HeroComponent);
+                return HeroComponent;
             }());
-            exports_1("AppComponent", AppComponent);
+            exports_1("HeroComponent", HeroComponent);
         }
     }
 });
