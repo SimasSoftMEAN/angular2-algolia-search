@@ -12,7 +12,7 @@
 <div class="container">
 
     <scotch-search></scotch-search>
-    
+
 </div>
 
 <!-- JS -->
@@ -34,7 +34,10 @@
     packages: {
       dist: {
         format: 'register',
-        defaultExtension: 'js'
+        defaultExtension: 'js',
+        map: {
+            jquery: '//code.jquery.com/jquery-2.1.4.min.js'
+          }
       }
     }
   });

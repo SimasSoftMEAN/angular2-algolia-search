@@ -1,35 +1,37 @@
 import {OnInit, Component} from 'angular2/core';
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
   selector   : 'scotch-search',
-  providers  : [HTTP_PROVIDERS],
   templateUrl: './app/components/app.html'
 })
 
 export class AppComponent implements OnInit {
   index;
-  facetFilters:Array<string>;
+  client;
+  results:Array<Object>;
+  options:Object = {
+    facets: '*',
+    facetFilters: ['status:published', 'is_spam:0']
+  };
 
-
-  constructor() {}
+  constructor() {
+    this.client = client;
+    this.index  = this.client.initIndex('posts_local');
+  }
 
   ngOnInit() {
-    this.index = client.initIndex('posts_local');
-
-    this.index.search('something', function searchDone(err, content) {
-      // err is either `null` or an `Error` object, with a `message` property
-      // content is either the result of the command or `undefined`
-
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      console.log(content);
-    });
-
-    console.log('waht');
-    console.log(algoliasearch);
+    this.getSearchResults('angular');
   }
+
+  getSearchResults(query:string) {
+    this.index.search(query, this.options)
+      .then(function(data) {
+        this.results = data.hits;
+        console.log(data);
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+  }
+
 }
