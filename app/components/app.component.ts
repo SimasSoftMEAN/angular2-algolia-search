@@ -1,23 +1,35 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
-import {HeroesComponent} from './heroes/heroes.component';
-import {HeroDetailComponent} from './heroes/hero-detail.component';
-import {HeroService} from '../services/hero.service';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {OnInit, Component} from 'angular2/core';
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
-  selector   : 'my-app',
-  directives : [ROUTER_DIRECTIVES],
-  providers  : [HeroService, ROUTER_PROVIDERS],
-  templateUrl: 'app/components/app.html'
+  selector   : 'scotch-search',
+  providers  : [HTTP_PROVIDERS],
+  templateUrl: './app/components/app.html'
 })
 
-@RouteConfig([
-  { path: '/dashboard', name: 'Dashboard', component: DashboardComponent, useAsDefault: true },
-  { path: '/heroes', name: 'Heroes', component: HeroesComponent },
-  { path: '/heroes/:id', name: 'HeroDetail', component: HeroDetailComponent }
-])
+export class AppComponent implements OnInit {
+  index;
+  facetFilters:Array<string>;
 
-export class AppComponent {
-  title = 'Tour of Heroes';
+
+  constructor() {}
+
+  ngOnInit() {
+    this.index = client.initIndex('posts_local');
+
+    this.index.search('something', function searchDone(err, content) {
+      // err is either `null` or an `Error` object, with a `message` property
+      // content is either the result of the command or `undefined`
+
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      console.log(content);
+    });
+
+    console.log('waht');
+    console.log(algoliasearch);
+  }
 }
