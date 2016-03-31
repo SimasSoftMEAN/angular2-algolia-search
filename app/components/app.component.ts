@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor() {
     this.client = client;
-    this.index  = this.client.initIndex('posts_local');
+    this.index  = this.client.initIndex('posts_production');
   }
 
   ngOnInit() {
@@ -25,11 +25,11 @@ export class AppComponent implements OnInit {
 
   getSearchResults(query:string) {
     this.index.search(query, this.options)
-      .then(function(data) {
+      .then((data) => {
         this.results = data.hits;
         console.log(data);
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.error(error);
       });
   }

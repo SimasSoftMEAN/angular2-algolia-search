@@ -1,1 +1,11 @@
-Stuff
+<label>Sort By</label>
+<select [(ngModel)]="sort">
+    <option value="likes">Likes</option>
+    <option value="pageviews">Pageviews</option>
+</select>
+
+<div *ngIf="results">
+<div *ngFor="#result of results">
+    <a href="{{ result.published_url }}" target="_blank">{{ result.title }}</a>
+</div>
+</div>

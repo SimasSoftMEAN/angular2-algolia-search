@@ -25,15 +25,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         facetFilters: ['status:published', 'is_spam:0']
                     };
                     this.client = client;
-                    this.index = this.client.initIndex('posts_local');
+                    this.index = this.client.initIndex('posts_production');
                 }
                 AppComponent.prototype.ngOnInit = function () {
                     this.getSearchResults('angular');
                 };
                 AppComponent.prototype.getSearchResults = function (query) {
+                    var _this = this;
                     this.index.search(query, this.options)
                         .then(function (data) {
-                        this.results = data.hits;
+                        _this.results = data.hits;
                         console.log(data);
                     })
                         .catch(function (error) {
