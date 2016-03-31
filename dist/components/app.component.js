@@ -20,29 +20,32 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.title = 'hello';
                     this.options = {
                         facets: '*',
                         facetFilters: ['status:published', 'is_spam:0']
                     };
                     this.client = client;
-                    this.index = this.client.initIndex('posts_local');
+                    this.index = this.client.initIndex('posts_production');
                 }
                 AppComponent.prototype.ngOnInit = function () {
-                    this.getSearchResults('angular');
+                    console.log('init');
+                    console.log(this.getSearchResults('angular'));
                 };
                 AppComponent.prototype.getSearchResults = function (query) {
+                    var _this = this;
                     this.index.search(query, this.options)
                         .then(function (data) {
-                        this.results = data.hits;
                         console.log(data);
+                        _this.results = data.hits;
                     })
                         .catch(function (error) {
-                        console.error(error);
+                        console.log(error);
                     });
                 };
                 AppComponent = __decorate([
                     core_1.Component({
-                        selector: 'scotch-search',
+                        selector: 'app-app',
                         templateUrl: './app/components/app.html'
                     }), 
                     __metadata('design:paramtypes', [])

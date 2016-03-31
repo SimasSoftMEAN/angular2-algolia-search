@@ -1,1 +1,18 @@
-Stuff
+<header>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Super Search</a>
+        </div>
+    </nav>
+
+    <form>
+        <input type="text" class="form-control" [(ngModel)]="query">
+    </form>
+
+    {{ query }}
+</header>
+
+
+<div *ngFor="#result of results">
+    <a href="{{ result.published_url }}">{{ result.title }}</a>
+</div>

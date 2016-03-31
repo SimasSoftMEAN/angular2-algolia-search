@@ -1,14 +1,15 @@
 import {OnInit, Component} from 'angular2/core';
 
 @Component({
-  selector   : 'scotch-search',
+  selector   : 'app-app',
   templateUrl: './app/components/app.html'
 })
 
 export class AppComponent implements OnInit {
   index;
   client;
-  results:Array<Object>;
+  results;
+  title = 'hello';
   options:Object = {
     facets: '*',
     facetFilters: ['status:published', 'is_spam:0']
@@ -16,21 +17,22 @@ export class AppComponent implements OnInit {
 
   constructor() {
     this.client = client;
-    this.index  = this.client.initIndex('posts_local');
+    this.index  = this.client.initIndex('posts_production');
   }
 
   ngOnInit() {
-    this.getSearchResults('angular');
+    console.log('init');
+    console.log(this.getSearchResults('angular'));
   }
 
   getSearchResults(query:string) {
     this.index.search(query, this.options)
-      .then(function(data) {
-        this.results = data.hits;
+      .then((data) => {
         console.log(data);
+        this.results = data.hits;
       })
-      .catch(function(error) {
-        console.error(error);
+      .catch((error) => {
+        console.log(error);
       });
   }
 
