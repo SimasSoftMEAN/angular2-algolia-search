@@ -9,6 +9,12 @@
         <input type="text" class="form-control" [(ngModel)]="query">
     </form>
 
+    <label>Sort By</label>
+    <select [(ngModel)]="sort">
+        <option value="likes">Likes</option>
+        <option value="pageviews">Pageviews</option>
+    </select>
+
     {{ query }}
 </header>
 
